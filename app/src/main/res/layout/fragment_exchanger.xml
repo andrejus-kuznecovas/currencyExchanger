@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="viewModel"
+            type="com.example.currencyexchanger.exchanger.ExchangeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#CCF1F6"
+        tools:context=".MainActivity">
+
+        <EditText
+            android:id="@+id/sell_input_decimal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            app:layout_constraintEnd_toStartOf="@+id/currency_spinner_sell"
+            app:layout_constraintTop_toBottomOf="@+id/currency_exchange_text" />
+
+        <Spinner
+            android:id="@+id/currency_spinner_sell"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:spinnerMode="dropdown"
+            app:layout_constraintBottom_toBottomOf="@+id/sell_input_decimal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/currency_exchange_text" />
+
+        <TextView
+            android:id="@+id/balance_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:text="MY BALANCES"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/currency_exchange_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:text="CURRENCY EXCHANGE"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/balance_recyclerview" />
+
+        <TextView
+            android:id="@+id/sell_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Sell"
+            app:layout_constraintBaseline_toBaselineOf="@+id/sell_input_decimal"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/receive_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="16dp"
+            android:text="Receive"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sell_text" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/balance_recyclerview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:items="@{viewModel.balances}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/balance_text"></androidx.recyclerview.widget.RecyclerView>
+        <!--            tools:listitem="@layout/balance_grid_item" />-->
+
+        <EditText
+            android:id="@+id/receive_input_decimal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="16dp"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            app:layout_constraintEnd_toStartOf="@+id/currency_spinner_receive"
+            app:layout_constraintStart_toEndOf="@+id/receive_text"
+            app:layout_constraintTop_toBottomOf="@+id/sell_input_decimal" />
+
+        <Spinner
+            android:id="@+id/currency_spinner_receive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintBottom_toBottomOf="@+id/receive_input_decimal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sell_input_decimal" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="SUBMIT"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/receive_input_decimal"
+            android:background="#086AFB" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
